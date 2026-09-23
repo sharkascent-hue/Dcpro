@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/logo-round.webp">
-<script>document.documentElement.classList.add('js')</script>
+<script>document.documentElement.classList.add('js','locked')</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -57,7 +57,7 @@ body{
   font-variation-settings:"wdth" 100;
   -webkit-font-smoothing:antialiased;overflow-x:clip;
 }
-body.locked{overflow:hidden}
+html.locked,html.menu-open{overflow:hidden}
 img{max-width:100%;display:block}
 a{color:inherit}
 h1,h2,h3{line-height:1.02;margin:0;letter-spacing:-.02em;font-variation-settings:"wdth" 112}
@@ -353,14 +353,17 @@ footer{padding:56px 0 110px;font-size:15px;color:var(--muted)}
 @media (max-width:880px){
   nav.main,.bar>.btn{display:none}
   .menu-toggle{display:grid}
+  /* backdrop-filter would make the header the containing block for the fixed menu */
+  .menu-open header.site{background:var(--paper);backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:0 1px 0 var(--line)}
   .menu-open nav.main{
-    display:block;position:fixed;inset:76px 0 0;background:var(--paper);padding:20px var(--pad);
+    display:block;position:fixed;top:76px;left:0;right:0;height:calc(100dvh - 76px);overflow-y:auto;overscroll-behavior:contain;
+    background:var(--paper);padding:20px var(--pad) 40px;z-index:49;
     animation:menuIn .45s var(--ease);
   }
   .menu-open nav.main ul{flex-direction:column;gap:4px}
-  .menu-open nav.main a{font-size:clamp(30px,8vw,44px);font-weight:900;padding:10px 0;border-radius:0;border-bottom:1px solid var(--line);font-variation-settings:"wdth" 115}
-  .menu-open nav.main a:hover{background:none}
-  .menu-open nav.main .menu-call{display:flex;margin-top:24px}
+  .menu-open nav.main li a{font-size:clamp(30px,8vw,44px);font-weight:900;padding:10px 0;border-radius:0;border-bottom:1px solid var(--line);font-variation-settings:"wdth" 115}
+  .menu-open nav.main li a:hover{background:none}
+  .menu-open nav.main .menu-call{display:flex;width:100%;margin-top:28px;min-height:58px;font-size:18px}
   .hero-grid,.why-grid,.contact-grid,.head{grid-template-columns:1fr}
   .hero-art{max-width:560px;width:100%;justify-self:center}
   .stamp{left:2%}
@@ -371,7 +374,7 @@ nav.main .menu-call{display:none}
   .bar{height:68px}
   .brand img{width:42px;height:42px}
   .brand small{display:none}
-  .menu-open nav.main{inset:68px 0 0}
+  .menu-open nav.main{top:68px;height:calc(100dvh - 68px)}
   .featured,.all-services{grid-template-columns:1fr}
   .featured .card:last-child figure{aspect-ratio:16/11}
   .gallery{grid-template-columns:1fr;grid-auto-rows:220px}
@@ -392,7 +395,7 @@ nav.main .menu-call{display:none}
 }
 </style>
 </head>
-<body class="locked">
+<body>
 <a class="skip" href="#main">Skip to content</a>
 
 <!-- Intro: paint strokes sweep in, then the badge, then it wipes away -->
@@ -667,7 +670,7 @@ nav.main .menu-call{display:none}
     if (started) return;
     started = true;
     intro.classList.add('done');
-    body.classList.remove('locked');
+    root.classList.remove('locked');
     requestAnimationFrame(() => root.classList.add('ready'));
   };
   if (reduce) start();
@@ -696,7 +699,6 @@ nav.main .menu-call{display:none}
   const setMenu = open => {
     root.classList.toggle('menu-open', open);
     toggle.setAttribute('aria-expanded', open);
-    body.classList.toggle('locked', open);
   };
   toggle.addEventListener('click', () => setMenu(!root.classList.contains('menu-open')));
   document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => setMenu(false)));
