@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dc Pro Painting | Painters &amp; Decorators in Dublin</title>
+<meta name="description" content="Dc Pro Painting: interior and exterior painting, wallpaper hanging, spray painted kitchen units, woodwork and gutter cleaning across Dublin. On time and on budget. Call 085 813 8797.">
+<meta name="theme-color" content="#121417">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dc Pro Painting | Keeping the Bay Beautiful">
+<meta property="og:description" content="Interior and exterior painting and decorating across Dublin. On time and on budget.">
+<meta property="og:image" content="img/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/logo-round.webp">
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HousePainter",
+  "name": "Dc Pro Painting",
+  "slogan": "Keeping the Bay Beautiful",
+  "telephone": "+353858138797",
+  "email": "dcpropainting@hotmail.com",
+  "areaServed": "Dublin",
+  "address": { "@type": "PostalAddress", "addressLocality": "Dublin", "addressRegion": "Co. Dublin", "addressCountry": "IE" },
+  "image": "img/og.jpg",
+  "logo": "img/logo-round.webp"
+}
+</script>
+<style>
+:root{
+  --ink:#121417;
+  --ink-2:#23272d;
+  --paper:#faf8f4;
+  --paper-2:#f1ede5;
+  --line:#e2ddd3;
+  --muted:#565b63;
+  --green:#16794a;
+  --green-deep:#0f5a37;
+  --orange:#e6641c;
+  --orange-soft:#fbe4d6;
+  --radius:22px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --wrap:1180px;
+  --pad:clamp(16px,4vw,40px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:clamp(16px,1.05vw + 12px,18px);line-height:1.6;
+  font-variation-settings:"wdth" 100;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;
+}
+body.locked{overflow:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{line-height:1.02;margin:0;letter-spacing:-.02em;font-variation-settings:"wdth" 112}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--pad)}
+.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;transition:top .2s}
+.skip:focus{top:12px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:6px}
+
+/* ---------- Intro ---------- */
+.intro{
+  position:fixed;inset:0;z-index:100;background:var(--ink);
+  display:grid;place-items:center;overflow:hidden;
+  animation:introOut .9s var(--ease) 2.25s forwards;
+}
+.intro svg.strokes{position:absolute;inset:0;width:100%;height:100%}
+.intro .s{fill:none;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.intro .s1{stroke:var(--green);animation:draw .75s var(--ease) .15s forwards}
+.intro .s2{stroke:var(--orange);animation:draw .75s var(--ease) .45s forwards}
+.intro .s3{stroke:var(--paper);animation:draw .7s var(--ease) .8s forwards}
+.intro-badge{position:relative;display:grid;justify-items:center;gap:18px;text-align:center}
+.intro-badge img{
+  width:min(46vw,230px);border-radius:50%;background:#fff;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.45);
+  transform:scale(.4) rotate(-25deg);opacity:0;
+  animation:pop .8s var(--ease) 1.05s forwards;
+}
+.intro-badge p{
+  font-weight:800;letter-spacing:.24em;text-transform:uppercase;font-size:clamp(12px,1.4vw,15px);
+  color:var(--ink);opacity:0;transform:translateY(12px);
+  animation:rise .6s var(--ease) 1.45s forwards;
+}
+.intro-skip{
+  position:absolute;right:18px;bottom:18px;background:none;border:1px solid rgba(18,20,23,.3);
+  color:var(--ink);font:inherit;font-size:14px;padding:8px 14px;border-radius:999px;cursor:pointer;
+  opacity:0;animation:rise .4s ease .9s forwards;
+}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{transform:none;opacity:1}}
+@keyframes rise{to{transform:none;opacity:1}}
+@keyframes introOut{
+  0%{clip-path:inset(0 0 0 0)}
+  99%{clip-path:inset(0 0 100% 0)}
+  100%{clip-path:inset(0 0 100% 0);visibility:hidden}
+}
+.intro.done{display:none}
+
+/* ---------- Header ---------- */
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:60;transform-origin:0 50%;transform:scaleX(0);
+  background:linear-gradient(90deg,var(--green),var(--orange))}
+header.site{
+  position:sticky;top:0;z-index:50;
+  transition:background .35s var(--ease),box-shadow .35s var(--ease);
+}
+header.site.scrolled{background:rgba(250,248,244,.86);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);box-shadow:0 1px 0 var(--line)}
+.bar{display:flex;align-items:center;gap:18px;height:76px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;font-size:19px;letter-spacing:-.01em;font-variation-settings:"wdth" 110}
+.brand img{width:48px;height:48px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px var(--line)}
+.brand small{display:block;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-variation-settings:"wdth" 100}
+nav.main{margin-left:auto}
+nav.main ul{display:flex;gap:6px;list-style:none;margin:0;padding:0}
+nav.main a{display:block;padding:10px 14px;border-radius:999px;text-decoration:none;font-weight:600;font-size:16px;transition:background .25s}
+nav.main a:hover{background:var(--paper-2)}
+.btn{
+  --bg:var(--ink);--fg:#fff;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:52px;padding:0 24px;border-radius:999px;border:0;
+  background:var(--bg);color:var(--fg);font:inherit;font-weight:700;font-size:16px;text-decoration:none;cursor:pointer;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .25s;
+  position:relative;isolation:isolate;overflow:hidden;
+}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--orange);transform:translateX(-101%);transition:transform .45s var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(18,20,23,.55)}
+.btn:hover::before{transform:none}
+.btn:hover{color:var(--ink)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.orange{--bg:var(--orange);--fg:var(--ink)}
+.btn.orange::before{background:var(--ink)}
+.btn.orange:hover{color:#fff}
+.btn.ghost{--bg:transparent;--fg:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn.green{--bg:var(--green);--fg:#fff}
+.bar .btn{min-height:46px;padding:0 20px}
+.menu-toggle{display:none;margin-left:auto;width:48px;height:48px;border-radius:50%;border:0;background:var(--ink);color:#fff;cursor:pointer;place-items:center}
+.menu-toggle span{display:block;width:20px;height:2px;background:currentColor;position:relative;transition:transform .3s var(--ease),background .2s}
+.menu-toggle span::before,.menu-toggle span::after{content:"";position:absolute;left:0;width:20px;height:2px;background:#fff;transition:transform .3s var(--ease)}
+.menu-toggle span::before{top:-6px}.menu-toggle span::after{top:6px}
+.menu-open .menu-toggle span{background:transparent}
+.menu-open .menu-toggle span::before{transform:translateY(6px) rotate(45deg)}
+.menu-open .menu-toggle span::after{transform:translateY(-6px) rotate(-45deg)}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;padding:clamp(28px,5vw,64px) 0 clamp(56px,8vw,110px)}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(28px,5vw,72px);align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--green)}
+.eyebrow::before{content:"";width:28px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--green),var(--orange))}
+.hero h1{font-size:clamp(42px,6.2vw,86px);font-weight:900;margin:18px 0 22px;font-variation-settings:"wdth" 118}
+.hero h1 .line{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .line>span{display:inline-block}
+.hl{position:relative;white-space:nowrap}
+.hl svg{position:absolute;left:-2%;bottom:-.08em;width:104%;height:.36em;z-index:-1;overflow:visible}
+.hl path{fill:none;stroke:var(--orange);stroke-width:18;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;opacity:.9}
+.ready .hl path{animation:draw 1s var(--ease) .75s forwards}
+.lead{font-size:clamp(18px,1.3vw + 10px,21px);color:var(--muted);max-width:34ch}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.trust{display:flex;flex-wrap:wrap;gap:10px 22px;margin:30px 0 0;padding:0;list-style:none;font-weight:600;font-size:15px}
+.trust li{display:flex;align-items:center;gap:8px}
+.trust svg{width:18px;height:18px;color:var(--green)}
+
+.hero-art{position:relative;aspect-ratio:4/4.3}
+.frame{position:absolute;border-radius:var(--radius);overflow:hidden;background:var(--paper-2);box-shadow:0 40px 70px -35px rgba(18,20,23,.5)}
+.frame img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:transform 1.6s var(--ease)}
+.ready .frame img{transform:scale(1)}
+.frame.a{inset:0 12% 22% 0}
+.frame.b{inset:48% 0 0 34%;border:6px solid var(--paper)}
+.frame{clip-path:inset(0 100% 0 0 round var(--radius));transition:clip-path 1.2s var(--ease)}
+.frame.b{transition-delay:.25s}
+.ready .frame{clip-path:inset(0 0 0 0 round var(--radius))}
+.stamp{
+  position:absolute;left:-4%;bottom:6%;width:clamp(96px,11vw,132px);aspect-ratio:1;border-radius:50%;
+  background:#fff;box-shadow:0 18px 40px -18px rgba(18,20,23,.55);display:grid;place-items:center;
+  transform:scale(0) rotate(-40deg);transition:transform .9s var(--ease) .6s;
+}
+.ready .stamp{transform:none}
+.stamp img{width:86%;border-radius:50%}
+.stamp-ring{position:absolute;inset:-14px;animation:spin 22s linear infinite}
+.stamp-ring text{font-size:10.5px;font-weight:800;letter-spacing:.2em;fill:var(--ink);text-transform:uppercase}
+@keyframes spin{to{transform:rotate(360deg)}}
+.blob{position:absolute;z-index:-1;border-radius:50%;filter:blur(60px);opacity:.28;pointer-events:none}
+.blob.g{width:360px;height:360px;background:var(--green);right:-80px;top:40px}
+.blob.o{width:300px;height:300px;background:var(--orange);right:22%;bottom:-40px}
+
+/* entrance items */
+.js .enter{opacity:0;transform:translateY(28px)}
+.ready .enter{opacity:1;transform:none;transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--d,0) * 90ms)}
+.js .hero h1 .line>span{transform:translateY(105%)}
+.ready .hero h1 .line>span{transform:none;transition:transform 1s var(--ease);transition-delay:calc(var(--d,0) * 110ms)}
+
+/* ---------- Marquee ---------- */
+.marquee-wrap{overflow:hidden;padding:14px 0}
+.marquee{background:var(--ink);color:#fff;overflow:hidden;padding:20px 0;transform:rotate(-1.2deg);margin-left:-2vw;width:104vw}
+.marquee-track{display:flex;width:max-content;animation:marquee 38s linear infinite}
+.marquee ul{display:flex;gap:0;margin:0;padding:0;list-style:none}
+.marquee li{display:flex;align-items:center;gap:26px;padding-right:26px;font-weight:800;font-size:clamp(20px,2.4vw,30px);text-transform:uppercase;letter-spacing:.02em;white-space:nowrap;font-variation-settings:"wdth" 120}
+.marquee li::after{content:"";width:14px;height:14px;border-radius:50%;background:var(--orange)}
+.marquee li:nth-child(even)::after{background:var(--green)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ---------- Sections ---------- */
+section{scroll-margin-top:80px}
+.section{padding:clamp(72px,10vw,130px) 0}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:24px 60px;align-items:end;margin-bottom:clamp(36px,5vw,60px)}
+.head h2{font-size:clamp(36px,5vw,64px);font-weight:900;margin-top:14px}
+.head p{color:var(--muted);max-width:46ch}
+
+.featured{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{
+  background:#fff;border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;
+  box-shadow:0 1px 0 var(--line),0 20px 40px -32px rgba(18,20,23,.45);
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 1px 0 var(--line),0 34px 60px -34px rgba(18,20,23,.55)}
+.card figure{margin:0;aspect-ratio:16/11;overflow:hidden;position:relative}
+.card figure img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.card:hover figure img{transform:scale(1.06)}
+.card .tag{position:absolute;left:14px;top:14px;background:rgba(250,248,244,.94);padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.card-body{padding:24px 24px 26px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card h3{font-size:clamp(24px,2.1vw,28px);font-weight:800}
+.card p{color:var(--muted)}
+.card details{margin-top:auto}
+.card summary{
+  list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-weight:700;
+  padding:10px 0;color:var(--ink);
+}
+.card summary::-webkit-details-marker{display:none}
+.card summary svg{width:18px;height:18px;transition:transform .35s var(--ease)}
+.card details[open] summary svg{transform:rotate(180deg)}
+.card details .more{overflow:hidden;color:var(--muted)}
+.card details .more p+p{margin-top:10px}
+
+.all-services{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-radius:var(--radius);overflow:hidden;margin-top:22px;border:1px solid var(--line)}
+.svc{background:var(--paper);padding:28px 24px;display:flex;flex-direction:column;gap:10px;position:relative;transition:background .35s}
+.svc:hover{background:#fff}
+.svc .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:var(--paper-2);transition:background .35s,color .35s,transform .5s var(--ease)}
+.svc:hover .ic{background:var(--ink);color:#fff;transform:rotate(-8deg)}
+.svc:nth-child(3n+2):hover .ic{background:var(--green)}
+.svc:nth-child(3n):hover .ic{background:var(--orange);color:var(--ink)}
+.svc .ic svg{width:24px;height:24px}
+.svc h3{font-size:19px;font-weight:800;font-variation-settings:"wdth" 104;letter-spacing:-.01em}
+.svc p{font-size:15.5px;color:var(--muted);line-height:1.5}
+
+/* ---------- Work ---------- */
+.work{background:var(--ink);color:#fff;border-radius:clamp(24px,4vw,44px);margin-inline:clamp(8px,1.5vw,20px)}
+.work .eyebrow{color:#7fd0a5}
+.work .head p{color:#b8bcc3}
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(150px,17vw,230px);gap:16px}
+.shot{margin:0;position:relative;border-radius:18px;overflow:hidden;background:var(--ink-2)}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.shot:hover img{transform:scale(1.05)}
+.shot figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:40px 18px 16px;font-size:15px;font-weight:600;
+  background:linear-gradient(transparent,rgba(10,11,13,.82));
+}
+.shot:nth-child(1){grid-column:span 7;grid-row:span 2}
+.shot:nth-child(2){grid-column:span 5}
+.shot:nth-child(3){grid-column:span 5}
+.shot:nth-child(4){grid-column:span 12}
+.shot:nth-child(4) img{object-position:50% 45%}
+
+/* ---------- Why / Process ---------- */
+.why-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,6vw,90px);align-items:start}
+.why-grid h2{font-size:clamp(36px,5vw,64px);font-weight:900;margin:14px 0 20px}
+.why-grid .lead{max-width:40ch}
+.points{display:grid;gap:14px;margin-top:30px;padding:0;list-style:none}
+.points li{display:flex;gap:14px;align-items:flex-start;font-weight:600}
+.points li span{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:#fff}
+.points li:nth-child(even) span{background:var(--orange);color:var(--ink)}
+.points svg{width:16px;height:16px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:s}
+.step{
+  counter-increment:s;display:grid;grid-template-columns:auto 1fr;gap:6px 22px;align-items:baseline;
+  padding:26px 28px;border-radius:var(--radius);background:#fff;box-shadow:0 1px 0 var(--line);
+  transition:transform .5s var(--ease);
+}
+.step:hover{transform:translateX(8px)}
+.step::before{
+  content:"0" counter(s);grid-row:span 2;font-weight:900;font-size:44px;line-height:1;
+  font-variation-settings:"wdth" 70;color:transparent;-webkit-text-stroke:1.5px var(--ink);
+}
+.step h3{font-size:22px;font-weight:800}
+.step p{color:var(--muted);grid-column:2}
+
+/* ---------- Contact ---------- */
+.contact{position:relative;overflow:hidden;background:var(--green);color:#fff;border-radius:clamp(24px,4vw,44px);margin:0 clamp(8px,1.5vw,20px) clamp(8px,1.5vw,20px)}
+.contact::after{content:"";position:absolute;width:520px;height:520px;right:-160px;top:-180px;border-radius:50%;background:var(--orange);opacity:.9;filter:blur(2px)}
+.contact-grid{position:relative;z-index:1;display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(32px,6vw,80px)}
+.contact h2{font-size:clamp(38px,5.4vw,70px);font-weight:900;margin:14px 0 18px}
+.contact .eyebrow{color:#fff}
+.contact .eyebrow::before{background:#fff}
+.contact .lead{color:#e3f3ea}
+.direct{list-style:none;margin:34px 0 0;padding:0;display:grid;gap:12px}
+.direct a,.direct div{
+  display:flex;align-items:center;gap:16px;text-decoration:none;padding:16px 18px;border-radius:16px;
+  background:rgba(255,255,255,.1);transition:background .3s,transform .4s var(--ease);font-weight:700;
+}
+.direct a:hover{background:rgba(255,255,255,.18);transform:translateX(6px)}
+.direct small{display:block;font-weight:500;font-size:13px;opacity:.8;letter-spacing:.04em}
+.direct svg{width:24px;height:24px;flex:none}
+form.quote{background:var(--paper);color:var(--ink);border-radius:var(--radius);padding:clamp(22px,3vw,36px);display:grid;gap:16px;grid-template-columns:1fr 1fr;box-shadow:0 40px 80px -40px rgba(0,0,0,.5)}
+form.quote h3{grid-column:1/-1;font-size:26px;font-weight:800}
+.field{display:grid;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-weight:700;font-size:14px}
+.field input,.field select,.field textarea{
+  font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:12px;
+  padding:13px 14px;width:100%;transition:border-color .2s,box-shadow .2s;
+}
+.field textarea{min-height:120px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px rgba(22,121,74,.18)}
+.form-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.form-note{grid-column:1/-1;font-size:14px;color:var(--muted)}
+
+/* ---------- Footer ---------- */
+footer{padding:56px 0 110px;font-size:15px;color:var(--muted)}
+.foot{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:center}
+.foot nav ul{display:flex;flex-wrap:wrap;gap:6px 20px;list-style:none;margin:0;padding:0}
+.foot a{text-decoration:none;font-weight:600;color:var(--ink)}
+.foot a:hover{text-decoration:underline}
+
+/* ---------- WhatsApp FAB ---------- */
+.wa{
+  position:fixed;right:18px;bottom:18px;z-index:40;width:62px;height:62px;border-radius:50%;
+  background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.45);
+  transform:scale(0);transition:transform .6s var(--ease);
+}
+.ready .wa{transform:none;transition-delay:.8s}
+.wa:hover{transform:scale(1.08)}
+.wa svg{width:32px;height:32px}
+.wa::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 0 rgba(37,211,102,.55);animation:ping 2.6s ease-out 3.5s infinite}
+@keyframes ping{to{box-shadow:0 0 0 18px rgba(37,211,102,0)}}
+
+/* ---------- Scroll reveal ---------- */
+.js .reveal{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:calc(var(--d,0) * 90ms)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1020px){
+  .featured{grid-template-columns:1fr 1fr}
+  .featured .card:last-child{grid-column:1/-1}
+  .featured .card:last-child figure{aspect-ratio:21/9}
+  .all-services{grid-template-columns:1fr 1fr}
+}
+@media (max-width:880px){
+  nav.main,.bar>.btn{display:none}
+  .menu-toggle{display:grid}
+  .menu-open nav.main{
+    display:block;position:fixed;inset:76px 0 0;background:var(--paper);padding:20px var(--pad);
+    animation:menuIn .45s var(--ease);
+  }
+  .menu-open nav.main ul{flex-direction:column;gap:4px}
+  .menu-open nav.main a{font-size:clamp(30px,8vw,44px);font-weight:900;padding:10px 0;border-radius:0;border-bottom:1px solid var(--line);font-variation-settings:"wdth" 115}
+  .menu-open nav.main a:hover{background:none}
+  .menu-open nav.main .menu-call{display:flex;margin-top:24px}
+  .hero-grid,.why-grid,.contact-grid,.head{grid-template-columns:1fr}
+  .hero-art{max-width:560px;width:100%;justify-self:center}
+  .stamp{left:2%}
+}
+nav.main .menu-call{display:none}
+@keyframes menuIn{from{opacity:0;transform:translateY(-12px)}}
+@media (max-width:640px){
+  .bar{height:68px}
+  .brand img{width:42px;height:42px}
+  .brand small{display:none}
+  .menu-open nav.main{inset:68px 0 0}
+  .featured,.all-services{grid-template-columns:1fr}
+  .featured .card:last-child figure{aspect-ratio:16/11}
+  .gallery{grid-template-columns:1fr;grid-auto-rows:220px}
+  .shot:nth-child(n){grid-column:auto;grid-row:auto}
+  form.quote{grid-template-columns:1fr}
+  .cta-row .btn{flex:1 1 100%}
+  .step{padding:22px 20px;gap:4px 16px}
+  .step::before{font-size:36px}
+  .contact::after{width:320px;height:320px;right:-140px;top:-120px}
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .intro{display:none}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;transition-delay:0s!important}
+  .marquee-track{animation:none}
+}
+</style>
+</head>
+<body class="locked">
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Intro: paint strokes sweep in, then the badge, then it wipes away -->
+<div class="intro" id="intro" aria-hidden="true">
+  <svg class="strokes" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice">
+    <path class="s s1" pathLength="1" stroke-width="360" d="M-200,120 C200,40 600,260 1200,90 M1200,90 C900,420 300,300 -200,520"/>
+    <path class="s s2" pathLength="1" stroke-width="360" d="M1200,380 C800,520 300,340 -200,700 M-200,700 C300,700 700,980 1200,860"/>
+    <path class="s s3" pathLength="1" stroke-width="620" d="M-250,250 C250,150 700,450 1250,300 M1250,300 C800,700 300,550 -250,850 M-250,850 C300,850 700,1150 1250,1050"/>
+  </svg>
+  <div class="intro-badge">
+    <img src="img/logo-round.webp" alt="" width="230" height="230">
+    <p>Keeping the Bay Beautiful</p>
+  </div>
+  <button class="intro-skip" type="button" tabindex="-1">Skip</button>
+</div>
+
+<div class="progress" aria-hidden="true"></div>
+
+<header class="site" id="top">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Dc Pro Painting, back to top">
+      <img src="img/logo-round.webp" alt="" width="48" height="48">
+      <span>Dc Pro Painting<small>Keeping the Bay Beautiful</small></span>
+    </a>
+    <nav class="main" id="menu" aria-label="Main">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Our work</a></li>
+        <li><a href="#why">Why us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="btn orange menu-call" href="tel:+353858138797">Call 085 813 8797</a>
+    </nav>
+    <a class="btn" href="#contact">Get a free quote</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu"><span></span><b class="visually-hidden">Menu</b></button>
+  </div>
+</header>
+
+<main id="main">
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="blob g" aria-hidden="true"></div>
+    <div class="blob o" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow enter">Painting &amp; decorating · Dublin</span>
+        <h1 id="hero-title">
+          <span class="line"><span>Dublin's painters,</span></span>
+          <span class="line"><span style="--d:1">on time &amp;</span></span>
+          <span class="line"><span style="--d:2"><span class="hl">on budget.<svg viewBox="0 0 300 30" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M6,20 C80,8 190,6 294,16"/></svg></span></span></span>
+        </h1>
+        <p class="lead enter" style="--d:3">Interior and exterior painting, wallpaper hanging and spray painted kitchen units, for homes of every size across Dublin.</p>
+        <div class="cta-row enter" style="--d:4">
+          <a class="btn orange" href="#contact">Get a free quote
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn ghost" href="tel:+353858138797">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
+            085 813 8797
+          </a>
+        </div>
+        <ul class="trust enter" style="--d:5">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Free quotes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Jobs of all sizes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Competitive prices</li>
+        </ul>
+      </div>
+
+      <div class="hero-art">
+        <div class="frame a"><img src="img/house-render.webp" alt="Two-storey house with freshly painted cream render and dark trim" width="480" height="300" fetchpriority="high"></div>
+        <div class="frame b"><img src="img/kitchen-spray.webp" alt="Kitchen with units spray painted in navy blue" width="480" height="300"></div>
+        <div class="stamp" aria-hidden="true">
+          <svg class="stamp-ring" viewBox="0 0 160 160">
+            <defs><path id="ring" d="M80,80 m-68,0 a68,68 0 1,1 136,0 a68,68 0 1,1 -136,0"/></defs>
+            <text><textPath href="#ring">Keeping the Bay Beautiful · Dublin ·</textPath></text>
+          </svg>
+          <img src="img/logo-round.webp" alt="" width="120" height="120">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-wrap" aria-hidden="true"><div class="marquee">
+    <div class="marquee-track">
+      <ul><li>Interior painting</li><li>Exterior painting</li><li>Wallpaper hanging</li><li>Spray kitchen units</li><li>Woodwork</li><li>Paint repair</li><li>Gutter cleaning</li></ul>
+      <ul><li>Interior painting</li><li>Exterior painting</li><li>Wallpaper hanging</li><li>Spray kitchen units</li><li>Woodwork</li><li>Paint repair</li><li>Gutter cleaning</li></ul>
+    </div>
+  </div></div>
+
+  <!-- Services -->
+  <section class="section" id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <div class="head">
+        <div class="reveal">
+          <span class="eyebrow">What we do</span>
+          <h2 id="services-title">Every room, every wall, every finish.</h2>
+        </div>
+        <p class="reveal" style="--d:1">We offer a full range of professional painting and decorating services, tailored to your home and your budget.</p>
+      </div>
+
+      <div class="featured">
+        <article class="card reveal">
+          <figure><img src="img/kitchen-spray.webp" alt="Kitchen with units spray painted in navy blue" width="480" height="300" loading="lazy"><span class="tag">Interior</span></figure>
+          <div class="card-body">
+            <h3>Interior Decorating</h3>
+            <p>Competitively priced interior painting and decorating throughout Dublin, for projects of all sizes, including spray painting kitchen units.</p>
+            <details>
+              <summary>Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+              <div class="more"><p>We are known for delivering projects on time and with minimal disruption. Furniture and floors are covered and protected, and every room is left clean and tidy when we finish.</p></div>
+            </details>
+          </div>
+        </article>
+        <article class="card reveal" style="--d:1">
+          <figure><img src="img/exterior-prep.webp" alt="Pebble-dash house front masked with paper and tape before exterior painting" width="480" height="300" loading="lazy"><span class="tag">Exterior</span></figure>
+          <div class="card-body">
+            <h3>Exterior Painting</h3>
+            <p>Affordable exterior painting and decorating across Dublin. Our skilled team manages projects of all sizes.</p>
+            <details>
+              <summary>Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+              <div class="more"><p>From repairing, painting and maintaining exterior woodwork to re-painting renders and wall coverings. Every surface is properly masked and prepared first, so the finish looks sharp and lasts through the Irish weather.</p></div>
+            </details>
+          </div>
+        </article>
+        <article class="card reveal" style="--d:2">
+          <figure><img src="img/roof-gutter.webp" alt="Roof tiles beside a gutter, mossy on one side and cleaned on the other" width="480" height="300" loading="lazy"><span class="tag">Maintenance</span></figure>
+          <div class="card-body">
+            <h3>Gutter Cleaning</h3>
+            <p>Comprehensive gutter cleaning and maintenance throughout Dublin, keeping gutters free from debris so water flows properly.</p>
+            <details>
+              <summary>Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+              <div class="more"><p>Blocked gutters can overflow and damage your home's foundation and exterior walls. Regular cleaning keeps water where it should go and helps your gutters last longer.</p></div>
+            </details>
+          </div>
+        </article>
+      </div>
+
+      <div class="all-services">
+        <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="15" height="6" rx="1.5"/><path d="M18 6h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-8v3"/><rect x="10" y="14" width="4" height="7" rx="1"/></svg></div><h3>Interior painting</h3><p>Professional interior painting, tailored to you.</p></div>
+        <div class="svc reveal" style="--d:1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div><h3>Exterior painting</h3><p>Local, reliable exterior painting to suit your needs.</p></div>
+        <div class="svc reveal" style="--d:2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M4 9h16M4 15h16M10 3v6M14 9v6M10 15v6"/></svg></div><h3>Wallpaper hanging</h3><p>Experienced wallpaper hanging at great value.</p></div>
+        <div class="svc reveal" style="--d:3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="9" width="8" height="12" rx="1.5"/><path d="M10 9V6h4v3M14 6h3M19 4v0M21 6v0M19 8v0"/></svg></div><h3>Spray painting</h3><p>Spray painting services from a team that cares.</p></div>
+        <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 11h18M12 4v16M9 7.5h0M15 7.5h0M9 14h0M15 14h0"/></svg></div><h3>Spray kitchen units</h3><p>Give your kitchen a new look without replacing it.</p></div>
+        <div class="svc reveal" style="--d:1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div><h3>Paint repair</h3><p>Professional paint repair, tailored to you.</p></div>
+        <div class="svc reveal" style="--d:2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V8l4-4h8l4 4v12"/><path d="M4 12h16M4 16h16M9 20v-4M15 20v-4"/></svg></div><h3>Woodwork maintenance</h3><p>Local, reliable woodwork maintenance for doors, windows and trims.</p></div>
+        <div class="svc reveal" style="--d:3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18l-2 4H5z"/><path d="M17 10v8a2 2 0 0 1-2 2h0M9 14c0 1.5 1 2.5 1 3.5a1 1 0 0 1-2 0c0-1 1-2 1-3.5z"/></svg></div><h3>Gutter cleaning</h3><p>Clear gutters that protect your walls and foundations.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section class="section work" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="head">
+        <div class="reveal">
+          <span class="eyebrow">Recent work</span>
+          <h2 id="work-title">Finished properly, left spotless.</h2>
+        </div>
+        <p class="reveal" style="--d:1">A few recent jobs from around Dublin: fresh render, spray painted kitchen units, careful preparation and roofs brought back to life.</p>
+      </div>
+      <div class="gallery">
+        <figure class="shot reveal"><img src="img/house-render.webp" alt="Two-storey house with freshly painted cream render and dark trim" width="480" height="300" loading="lazy"><figcaption>Exterior render repaint</figcaption></figure>
+        <figure class="shot reveal" style="--d:1"><img src="img/kitchen-spray.webp" alt="Kitchen with units spray painted in navy blue" width="480" height="300" loading="lazy"><figcaption>Kitchen units spray painted navy</figcaption></figure>
+        <figure class="shot reveal" style="--d:2"><img src="img/exterior-prep.webp" alt="Pebble-dash house front masked with paper and tape before exterior painting" width="480" height="300" loading="lazy"><figcaption>Masked and protected before painting</figcaption></figure>
+        <figure class="shot reveal"><img src="img/roof-gutter.webp" alt="Roof tiles beside a gutter, mossy on one side and cleaned on the other" width="480" height="300" loading="lazy"><figcaption>Before and after: moss cleared from the tiles</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why us -->
+  <section class="section" id="why" aria-labelledby="why-title">
+    <div class="wrap why-grid">
+      <div>
+        <span class="eyebrow reveal">Why Dc Pro</span>
+        <h2 id="why-title" class="reveal" style="--d:1">A reputation built on time and budget.</h2>
+        <p class="lead reveal" style="--d:2">Dublin's leading painting and decorating company. We cover all interior and exterior painting and wallpaper hanging, and we treat your home like our own.</p>
+        <ul class="points">
+          <li class="reveal" style="--d:3"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Projects delivered on time and on budget</li>
+          <li class="reveal" style="--d:4"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Competitive, clear pricing</li>
+          <li class="reveal" style="--d:5"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>No job too big or too small</li>
+          <li class="reveal" style="--d:6"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Local Dublin team</li>
+        </ul>
+      </div>
+      <ol class="steps" aria-label="How it works">
+        <li class="step reveal"><h3>Get in touch</h3><p>Call, WhatsApp or send the form. Tell us what you'd like done.</p></li>
+        <li class="step reveal" style="--d:1"><h3>Free quote</h3><p>We look at the job and give you a clear price, with no surprises.</p></li>
+        <li class="step reveal" style="--d:2"><h3>Prep &amp; protect</h3><p>Floors, furniture and windows are covered and surfaces prepared properly.</p></li>
+        <li class="step reveal" style="--d:3"><h3>Paint &amp; tidy</h3><p>A clean, lasting finish, and we leave your home as tidy as we found it.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="eyebrow reveal">Free quote</span>
+        <h2 id="contact-title" class="reveal" style="--d:1">Let's make your home look new.</h2>
+        <p class="lead reveal" style="--d:2">Tell us about your job and we'll get back to you with a free, no-obligation quote.</p>
+        <ul class="direct">
+          <li class="reveal" style="--d:3"><a href="tel:+353858138797"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg><span><small>Call us</small>085 813 8797</span></a></li>
+          <li class="reveal" style="--d:4"><a href="https://wa.me/353858138797" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.5 11.5 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg><span><small>WhatsApp</small>Message us</span></a></li>
+          <li class="reveal" style="--d:5"><a href="mailto:dcpropainting@hotmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span><small>Email</small>dcpropainting@hotmail.com</span></a></li>
+          <li class="reveal" style="--d:6"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><small>Area</small>Dublin, Co. Dublin</span></div></li>
+        </ul>
+      </div>
+
+      <form class="quote reveal" style="--d:2" id="quote" action="mailto:dcpropainting@hotmail.com" method="post" enctype="text/plain">
+        <h3>Request a quote</h3>
+        <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>
+        <div class="field"><label for="f-area">Area</label><input id="f-area" name="area" autocomplete="address-level2" placeholder="e.g. Clontarf"></div>
+        <div class="field"><label for="f-service">Service</label>
+          <select id="f-service" name="service">
+            <option>Interior painting</option>
+            <option>Exterior painting</option>
+            <option>Wallpaper hanging</option>
+            <option>Spray kitchen units</option>
+            <option>Spray painting</option>
+            <option>Paint repair</option>
+            <option>Woodwork maintenance</option>
+            <option>Gutter cleaning</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field full"><label for="f-msg">About the job</label><textarea id="f-msg" name="message" placeholder="Rooms, size, timing, anything useful"></textarea></div>
+        <div class="form-actions">
+          <button class="btn green" type="submit" value="whatsapp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+            Send on WhatsApp
+          </button>
+          <button class="btn" type="submit" value="email">Send by email</button>
+        </div>
+        <p class="form-note">This opens WhatsApp or your email app with your details filled in, ready to send.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="#top" aria-label="Dc Pro Painting, back to top">
+      <img src="img/logo-round.webp" alt="" width="48" height="48" loading="lazy">
+      <span>Dc Pro Painting<small>Keeping the Bay Beautiful</small></span>
+    </a>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Our work</a></li>
+        <li><a href="#why">Why us</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="tel:+353858138797">085 813 8797</a></li>
+      </ul>
+    </nav>
+    <p>© <span id="year">2026</span> Dc Pro Painting. All rights reserved.</p>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/353858138797" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.5 11.5 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg>
+</a>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  const body = document.body;
+  const intro = document.getElementById('intro');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Intro: finish on its own animation end, or on click / key / skip
+  let started = false;
+  const start = () => {
+    if (started) return;
+    started = true;
+    intro.classList.add('done');
+    body.classList.remove('locked');
+    requestAnimationFrame(() => root.classList.add('ready'));
+  };
+  if (reduce) start();
+  else {
+    intro.addEventListener('animationend', e => { if (e.animationName === 'introOut') start(); });
+    intro.addEventListener('click', start);
+    addEventListener('keydown', start, { once: true });
+    setTimeout(start, 3600); // safety net
+  }
+
+  // Header state + scroll progress
+  const header = document.querySelector('header.site');
+  const bar = document.querySelector('.progress');
+  let ticking = false;
+  const onScroll = () => {
+    const max = root.scrollHeight - innerHeight;
+    header.classList.toggle('scrolled', scrollY > 10);
+    bar.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+    ticking = false;
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+
+  // Mobile menu
+  const toggle = document.querySelector('.menu-toggle');
+  const setMenu = open => {
+    root.classList.toggle('menu-open', open);
+    toggle.setAttribute('aria-expanded', open);
+    body.classList.toggle('locked', open);
+  };
+  toggle.addEventListener('click', () => setMenu(!root.classList.contains('menu-open')));
+  document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+  // Scroll reveal
+  const els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduce) {
+    const io = new IntersectionObserver(entries => entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    }), { rootMargin: '0px 0px -8% 0px', threshold: .12 });
+    els.forEach(el => io.observe(el));
+  } else els.forEach(el => el.classList.add('in'));
+
+  // Smooth open/close for "Read more"
+  document.querySelectorAll('.card details').forEach(d => {
+    const more = d.querySelector('.more');
+    d.querySelector('summary').addEventListener('click', e => {
+      if (reduce) return;
+      e.preventDefault();
+      if (d.open) {
+        const h = more.scrollHeight;
+        more.animate([{ height: h + 'px', opacity: 1 }, { height: 0, opacity: 0 }], { duration: 350, easing: 'cubic-bezier(.22,1,.36,1)' })
+          .onfinish = () => { d.open = false; };
+      } else {
+        d.open = true;
+        const h = more.scrollHeight;
+        more.animate([{ height: 0, opacity: 0 }, { height: h + 'px', opacity: 1 }], { duration: 450, easing: 'cubic-bezier(.22,1,.36,1)' });
+      }
+    });
+  });
+
+  // Quote form → WhatsApp or email with the details filled in
+  document.getElementById('quote').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = e.target;
+    const v = n => f.elements[n].value.trim();
+    const text = `Hi Dc Pro Painting, I'd like a quote.\n\nName: ${v('name')}\nPhone: ${v('phone')}\nArea: ${v('area') || '-'}\nService: ${v('service')}\n\n${v('message')}`;
+    if (e.submitter && e.submitter.value === 'email') {
+      location.href = `mailto:dcpropainting@hotmail.com?subject=${encodeURIComponent('Quote request: ' + v('service'))}&body=${encodeURIComponent(text)}`;
+    } else {
+      window.open(`https://wa.me/353858138797?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+    }
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
